@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link href="../css/dia1.css" rel="stylesheet" />
+
+        <script>
+            let botaoCalcular = document.getElementById(btnCalcular);
+
+            function calculandoIMC() {
+                let peso = document.getElementById("peso").value;
+                let altura = document.getElementById("altura").value / 100;
+                let resultado = documento.getElementById("resultado");
+
+                if (altura !== "" && peso !== "") {
+                    let IMC = peso / (altura * altura).toFixed(2);
+                    let mensagem = "";
+
+                    if (IMC < 18.5) {
+                        mensagem = "Abaixo do peso.";
+                    } else if (IMC < 25) {
+                        mensagem = "Com o peso ideal.";
+                    } else if (IMC < 30) {
+                        mensagem = "Levemente acima do peso.";
+                    } else if (IMC < 35) {
+                        mensagem = "Fique atento ao peso";
+                    } else if (IMC < 40) {
+                        mensagem = "Cuidado, pesado";
+                    } else {
+                        mensagem = "Acima do peso";
+                    }
+
+                    resultado.textContent = `Seu IMC é ${IMC}`;
+                } else {
+                    resuldato.textContent = "Prencha todos os campos!";
+                }
+            }
+
+            botaoCalcular.addEventListener("click", calculandoIMC);
+        </script>
+
+        <title>Calculo IMC</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Calcule seu IMC</h1>
+            <form>
+                <div class="container-calc-peso">
+                    <p>Digite seu peso</p>
+                    <input type="range" name="slide-peso" class="peso-slider" />
+                    <input id="peso" type="number" class="input-number" />
+                </div>
+                <div class="container-calc-altura">
+                    <p>Informe sua altura</p>
+                    <input
+                        type="range"
+                        name="slide-altura"
+                        class="altura-slider"
+                    />
+                    <input id="altura" type="number" class="input-number" />
+                </div>
+                <input
+                    id="btnCalcular"
+                    type="button"
+                    value="Calcular"
+                    class="button-calcular"
+                />
+            </form>
+            <div id="resultado"></div>
+        </div>
+    </body>
+</html>
